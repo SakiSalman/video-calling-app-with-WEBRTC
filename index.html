@@ -364,9 +364,14 @@ video {
         // Share Screen PC
         let screenShareStatus = false
         screenControl.onclick = (e) => {
-           
-            ShareScreen()
-            screenControl.classList.toggle('active')
+            screenShareStatus = !screenShareStatus
+            if (screenShareStatus == true) {
+                ShareScreen()
+
+            }else{
+                screenStream.getVideoTracks()[0].enabled = false
+
+            }
 
         }
 
