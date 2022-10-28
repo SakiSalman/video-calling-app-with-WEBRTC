@@ -325,6 +325,7 @@ video {
             })
         }
 
+        shareCam()
         // Share Screen
         
         const ShareScreen = () => {
@@ -343,12 +344,11 @@ video {
 
 
         // video camera
-        let camVideoStatus = true
+        let camVideoStatus = false
         camcontrol.onclick = (e) => {
             camVideoStatus = !camVideoStatus
-            camStream.getVideoTracks()[0].enabled = camVideoStatus
-
-            e.target.classList.toggle('active')
+            camStream.getVideoTracks()[0].enabled = camVideoStatus;
+            camcontrol.classList.toggle('active')
 
         }
 
@@ -356,7 +356,7 @@ video {
         let camAudioStatus = true
         audiocontrol.onclick = (e) => {
             camAudioStatus = !camAudioStatus
-            camStream.getAudioTracks()[0].enabled = camVideoStatus
+            camStream.getAudioTracks()[0].enabled = camAudioStatus
             audiocontrol.classList.toggle('active')
 
         }
@@ -365,11 +365,8 @@ video {
         let screenShareStatus = false
         screenControl.onclick = (e) => {
            
-                if (screenShareStatus == false) {
-                    ShareScreen()
-                    screenControl.classList.toggle('active')
-                }
-            
+            ShareScreen()
+            screenControl.classList.toggle('active')
 
         }
 
